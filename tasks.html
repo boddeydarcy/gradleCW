@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Homework 1: Tasks for db533</title>
+</head>
+
+<body>
+<h1>Homework 1: Tasks for db533</h1>
+
+<p>Your personal task is to develop a system for gyms and their trainers.</p>
+
+<h2>Task 1: Configuration [4 marks]</h2>
+<p>Configure the project to support the use of JSPs as view technology. JSPs must be configured to be placed inside folder <code>src/main/webapp/WEB-INF/views/</code>.</p>
+
+<h2>Task 2: Domain Classes [13 marks]</h2>
+
+<p>Create class <code>co2123.hw1.domain.Trainer</code>. With the following private fields:
+<ol>
+  <li><code>String name</code></li>
+  <li><code>String skills</code></li>
+  <li><code>String expertise</code></li>
+  <li><code>int duration</code></li>
+</ol>
+Generate necessary getters and setters. [7 marks]
+</p>
+
+<p>Create class <code>co2123.hw1.domain.Gym</code>. With the following private fields:
+<ol>
+  <li><code>int id</code></li>
+  <li><code>String classes</code></li>
+  <li><code>String website</code></li>
+  <li><code>List&lt;Trainer&gt; trainers</code></li>
+</ol>
+Generate necessary getters and setters. [6 marks]
+</p>
+
+
+<h2>Task 3: Controller (simple) [5 marks]</h2>
+<p>Create controller <code>co2123.hw1.controller.MainController</code> [2 marks].
+<ol>
+  <li>Requests for URL <code>"/"</code> (POST and GET) should show the view <code>start</code> (the corresponding JSP already exists). [3 marks]</li>
+</ol>
+</p>
+
+<h2>Task 4: Controller, View, and Form [20 marks]</h2>
+
+<p>Create field <code>public static List&lt;Gym&gt; gyms</code> in class <code>co2123.hw1.Hw1Application</code>. Initialize the list inside class <code>co2123.hw1.Hw1Application</code> to contain one gym with two trainers. [4 marks]</p>
+
+<p>Create controller <code>co2123.hw1.controller.GymController</code> and add methods with request mappings for the following behavior:
+<ol>
+  <li>GET requests for URL <code>"/gyms"</code> should show view <code>gyms/list</code>. [2 marks]
+    <ul>
+      <li>Add the list of all gyms from <code>co2123.hw1.Hw1Application</code> to the model as attribute <code>gyms</code>. [2 marks]</li>
+      <li>Create the corresponding JSP to list the classes and website of each gym followed by a link to URL <code>"/trainers?gym={id of gym}"</code>, e.g., <code>"/trainers?gym=3"</code>. [4 marks]</li>
+    </ul>
+  </li>
+  <li>Requests for URL <code>"/newGym"</code> should show view <code>gyms/form</code>. [3 marks] Create the corresponding JSP with a form with <code>modelAttribute="gym"</code> and <code>action="/addGym"</code> and inputs for all fields of class <code>Gym</code> except for <code>trainers</code>. [5 marks]</li>
+  <li>POST requests for URL <code>"/addGym"</code> should add a new gym to the list of all gyms in <code>co2123.hw1.Hw1Application</code> and redirect to <code>/gyms</code>. [3 marks]</li>
+</ol>
+</p>
+
+<h2>Task 5: Controller, View, and Form with additional Parameter [33 marks]</h2>
+
+<p>Create controller <code>co2123.hw1.controller.TrainerController</code> and add methods with request mappings for the following behavior:
+<ol>
+  <li>GET requests for URL <code>"/trainers"</code> should show view <code>trainers/list</code>. [2 marks]
+    <ul>
+      <li>Based on request parameter <code>gym</code> determine the corresponding gym from <code>co2123.hw1.Hw1Application</code>. [2 marks]</li>
+      <li>Add the list of all trainers of that gym to the model as attribute <code>trainers</code>. [2 marks]</li>
+      <li>Create the corresponding JSP for the view to list the name, skills, expertise, and duration of each trainer. [4 marks]</li>
+      <li>At the end of the list in the JSP add a link to URL <code>"/newTrainer?gym={id of gym whose trainers are listed}"</code>, e.g., <code>"/newTrainer?gym=3"</code>. [4 marks]</li>
+    </ul>
+  </li>
+  <li>Requests for URL <code>"/newTrainer"</code> should show view <code>trainers/form</code>. [3 marks]
+    <ul>
+      <li>Create the corresponding JSP with a form with <code>modelAttribute="trainer"</code> and <code>action="/addTrainer"</code> and inputs for all fields of class <code>Trainer</code>. [6 marks]</li>
+      <li>Also add the request parameter <code>gym</code> with the ID of the current gym. [4 marks]</li>
+    </ul>
+  </li>
+  <li>POST requests for URL <code>"/addTrainer"</code> should add a new trainer to the list of trainers of the gym identified by request parameter <code>gym</code> and then redirect to <code>/gyms</code>. [6 marks]</li>
+</ol>
+</p>
+
+<h2>Task 6: Validation [25 marks]</h2>
+
+<p>Set up a validator for class <code>Gym</code> and make it available in controller <code>GymController</code>. [4 marks]</p>
+<p>When adding a new gym validate that
+  <ol>
+    <li>The value of field <code>id</code> is unique within the list <code>Hw1Application.gyms</code>. [3 marks]</li>
+    <li>The value of field <code>classes</code> is not empty. [2 marks]</li>
+    <li>The value of field <code>website</code> is not empty. [2 marks]</li>
+  </ol>
+  In case of validation errors go back to the form and show error messages for each field in the form.
+</p>
+
+
+<p>Set up a validator for class <code>Trainer</code> and make it available in controller <code>TrainerController</code>. [4 marks]</p>
+<p>When adding a new trainer validate that
+  <ol>
+    <li>The value of field <code>name</code> is not empty. [2 marks]</li>
+    <li>The value of field <code>skills</code> is not empty. [2 marks]</li>
+    <li>The value of field <code>expertise</code> is either <code>"Tai Chi"</code>, <code>"Pilates"</code>, or <code>"Yoga"</code>. [3 marks]</li>
+    <li>The value of field <code>duration</code> is between (including) 45 and 60. [3 marks]</li>
+  </ol>
+  In case of validation errors go back to the form and show error messages for each field in the form.
+</p>
+
+</body>
+
+</html>
