@@ -2,16 +2,22 @@
 
 <%--@elvariable id="gym" type=""--%>
 <form:form modelAttribute="gym" action="/addGym" method="post">
-    <%--ID is set from the length of the gyms list + 1 so no two id's can be the same--%>
-    <p>ID: ${id}</p>
-
+    <label for="id">Gym ID:</label>
+    <form:input path="id" id="id"/>
+    <form:errors path="id"/>
+    <br>
+    <br>
     <%--Inputs for the Websites and classes--%>
     <label for="website">Website:</label>
     <form:input path="website" id="website"/>
-
+    <form:errors path="website"/>
+    <br>
+    <br>
     <label for="classes">Classes:</label>
     <form:input path="classes" id="classes"/>
-
+    <form:errors path="classes"/>
+    <br>
+    <br>
     <button type="submit">Add Gym</button>
 
 </form:form>
