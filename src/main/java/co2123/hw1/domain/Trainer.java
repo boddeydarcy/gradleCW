@@ -1,11 +1,12 @@
 package co2123.hw1.domain;
 
-public class Trainer {
+public class Trainer { // Initialize class variables
     private String name;
     private String skills;
     private String expertise;
     private int duration;
 
+    // Constructor declaration
     public Trainer(String name, String skills, String expertise, int duration) {
         this.name = name;
         this.skills = skills;
@@ -13,6 +14,11 @@ public class Trainer {
         this.duration = duration;
     }
 
+    public Trainer(){
+
+    }
+
+    // Getter and setter methods
     public String getName(){
         return name;
     }

@@ -1,16 +1,19 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<form:form action="/gyms" method="post">
-    <label for="id">Gym ID:</label>
-    <input type="text" id="id" name="id" required /><br />
+
+<%--@elvariable id="gym" type=""--%>
+<form:form modelAttribute="gym" action="/addGym" method="post">
+    <%--ID is set from the length of the gyms list + 1 so no two id's can be the same--%>
+    <p>ID: ${id}</p>
+
+    <%--Inputs for the Websites and classes--%>
+    <label for="website">Website:</label>
+    <form:input path="website" id="website"/>
 
     <label for="classes">Classes:</label>
-    <input type="text" id="classes" name="classes" required /><br />
+    <form:input path="classes" id="classes"/>
 
-    <label for="website">Website:</label>
-    <input type="text" id="website" name="website" required /><br />
+    <button type="submit">Add Gym</button>
 
-    <input type="submit">
 </form:form>
-
+<%--Navigation button--%>
 <a href="/gyms">Back to Gym List</a>

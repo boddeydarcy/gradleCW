@@ -1,4 +1,5 @@
 package co2123.hw1.domain;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Gym {
@@ -12,6 +13,15 @@ public class Gym {
         this.classes = classes;
         this.website = website;
         this.trainers = trainers;
+    }
+
+    public Gym(int id, String classes, String website) {
+        this.id = id;
+        this.classes = classes;
+        this.website = website;
+    }
+
+    public Gym() {
     }
 
     public int getId(){
@@ -44,5 +54,9 @@ public class Gym {
 
     public void setTrainers(List<Trainer> trainers){
         this.trainers = trainers;
+    }
+
+    public void addTrainer(Trainer trainer){
+        this.trainers.add(trainer);
     }
 }
