@@ -8,6 +8,7 @@ public class Gym {
     private String website;
     private List<Trainer> trainers;
 
+    // full gym declaration
     public Gym(int id, String classes, String website, List<Trainer> trainers){
         this.id = id;
         this.classes = classes;
@@ -15,15 +16,18 @@ public class Gym {
         this.trainers = trainers;
     }
 
+    // gym with id, classes and website
     public Gym(int id, String classes, String website) {
         this.id = id;
         this.classes = classes;
         this.website = website;
     }
 
+    // empty gym
     public Gym() {
     }
 
+    // getter and setter methods
     public int getId(){
         return id;
     }

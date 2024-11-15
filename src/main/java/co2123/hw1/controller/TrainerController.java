@@ -21,6 +21,7 @@ public class TrainerController {
     @GetMapping("/trainers")
     public String listTrainers(@RequestParam("gym") int id, Model model) {
 
+        // loops through gyms list and finds the gym with the same id given
         for(Gym gym : gyms){
             if(gym.getId() == id){
                 model.addAttribute("gym", gym);

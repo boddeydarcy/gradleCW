@@ -14,6 +14,7 @@ public class Trainer { // Initialize class variables
         this.duration = duration;
     }
 
+    // empty trainer
     public Trainer(){
 
     }
